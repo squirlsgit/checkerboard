@@ -1,0 +1,20 @@
+
+<div style="width:50%; height: 50%;" *ngIf="!winningMessage; else someonewon">
+  <mat-grid-list [cols]="boardDimensions"  rowHeight="50px">
+    <ng-container *ngFor="let row of board">
+      <mat-grid-tile
+          *ngFor="let tile of row"
+          colspan="1"
+          rowspan="1"
+          [style.background]="tile.color">
+          <app-checkerboard-tile [tile]="tile" [hoverable]="selectedtile" (pseudoClick)="selectedTile($event)"></app-checkerboard-tile>
+      </mat-grid-tile>
+    </ng-container>
+
+  </mat-grid-list>
+
+</div>
+
+<ng-template #someonewon>
+  {{winningMessage}}
+</ng-template>

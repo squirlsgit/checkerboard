@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICheckerboard, TileState } from './models/tile-state';
+import { ICheckerboard, ITileState, TileState } from './models/tile-state';
 
 @Component({
   selector: 'app-checkerboard',
@@ -22,10 +22,20 @@ export class CheckerboardComponent implements OnInit {
 
         this.board[j][i] = new TileState(i, j);
         this.board[j][i].init(0);
+        this.trackClickedTiles[this.getTileId(this.board[j][i])] = 0;
       }
     }
     this.setYellow();
     this.setPurple();
+  }
+
+  trackClickedTiles: {[id: string]: number} = {};
+  public get listTiles(){
+
+    return Object.keys(this.trackClickedTiles).filter(tileid => this.trackClickedTiles[tileid] > 0).map(tileid => `${tileid} :: ${this.trackClickedTiles[tileid]}`);
+  }
+  public getTileId(tile: ITileState){
+    return `${tile.i}-${tile.j}`;
   }
 
 
@@ -77,7 +87,7 @@ export class CheckerboardComponent implements OnInit {
   }
   public winningMessage: string = '';
   public selectedTile(tile: TileState){
-
+    this.trackClickedTiles[this.getTileId(tile)] += 1;
     if(!this.selectedtile && this.playermovingpiece === tile.state) this.selectedtile = tile;
     else if(tile.state !== this.playermovingpiece && this.selectedtile){
       if(!this.selectedtile.moveTile(tile, this.board)){

@@ -1,5 +1,5 @@
 
-<div style="width:50%; height: 50%;" *ngIf="!winningMessage; else someonewon">
+<div style="width:80%; margin-left:10%; margin-right:10%;" *ngIf="!winningMessage; else someonewon">
   <mat-grid-list [cols]="boardDimensions"  rowHeight="50px">
     <ng-container *ngFor="let row of board">
       <mat-grid-tile
@@ -12,6 +12,12 @@
     </ng-container>
 
   </mat-grid-list>
+
+</div>
+<div style="width:100%; text-align:center; margin">
+  <p *ngFor="let counter of listTiles">
+    {{counter}}
+  </p>
 
 </div>
 

@@ -1,3 +1,13 @@
+# Personal Comments
+
+I thought the assignment wants to show I know how to use event binding and input and output annotations, as well as how to nest components, so I made sure to do those.
+
+I use a class called TileState to enforce the rules of a game of checkers, in addition to keeping track of the number of times one clicks on a tile.
+
+I don't really know how much I should document here, but I use angular material grid list to create the grid, and use a nested component to show that I could do this the way it was intended. I have a variable that will determine the size of the NxN grid in the checkerboard component. As long as that number is even the game will work. The click events should work regardless if you throw try catches around everything.
+
+I added a couple functions to display the list of clicked squares or whatnot cause I forgot that was a requirement of this technical assignment. While I did that in less than a few minutes, I was fairly lazy with how I did it as I didn't plan for that behavior and was more excited to see how fast I could make a checkers game.
+
 # Checkerboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
